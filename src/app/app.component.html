@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row gap-4">
+    <div class="col-md-10 col-md-offset-2">
+      <h3>Upload your files</h3>
+    <div class="form-group">
+      <div class="input-group input-file" name="Fichier1">
+          <input type="text" class="form-control" 
+                 placeholder='Choose a plain/text fromattted file...' 
+                 type="file" 
+                 (change)="onFileUploaded($event)"
+                 accept="text/plain"
+                 />
+          <span class="input-group-btn">
+                <button class="btn btn-warning btn-danger" type="button">Reset</button>
+          </span>
+      </div>
+    </div>
+    </div>
+    <div class="card col-md-4 mt-5 " *ngFor="let file of files; let i = index">
+    <div class="card-body">
+      <h5 class="card-title">{{file.name}}</h5>
+      <p class="card-text">{{file.fileData}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">File size: {{file.size}} Kb</li>
+      <li class="list-group-item">Upload time: {{file.uploaded_at | date: 'dd/MM/yyyy hh:mm'}}</li>
+    </ul>
+    <div class="card-body">
+      <a (click)="onFileRemove(i)" class="btn btn-danger">Delete file</a>
+    </div>
+    </div>
+  </div>
+</div>
